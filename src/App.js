@@ -9,6 +9,7 @@ import RequireAuth from './RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Completed from './Components/Completed';
+import Footer from './Components/Footer';
 
 
 
@@ -24,7 +25,7 @@ function App() {
         <Route path='/todo' element={<RequireAuth><ToDo></ToDo></RequireAuth>}></Route>
         <Route path='/completed' element={<RequireAuth><Completed></Completed></RequireAuth>}></Route>
       </Routes>
-       
+       <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>
   );

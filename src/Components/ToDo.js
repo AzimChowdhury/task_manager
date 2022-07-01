@@ -12,7 +12,7 @@ function ToDo() {
     const [editingId, setEditingId] = useState('');
     const [editedTask, setEditedTask] = useState({});
 
-    const { data, isLoading, refetch } = useQuery('tasks', () => fetch(`http://localhost:5000/myTasks/${user.email}`).then(res => res.json()))
+    const { data, isLoading, refetch } = useQuery('tasks', () => fetch(`https://task-manager-azim.herokuapp.com/myTasks/${user.email}`).then(res => res.json()))
 
     const handleAddTask = (event) => {
         event.preventDefault();
@@ -22,7 +22,7 @@ function ToDo() {
         const name = event.target.name.value;
         const description = event.target.des.value;
         const task = { email: user.email, date, name, description }
-        fetch('http://localhost:5000/addTask', {
+        fetch('https://task-manager-azim.herokuapp.com/addTask', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -45,7 +45,7 @@ function ToDo() {
 
 
     const handleCompletedTask = (task) => {
-        fetch('http://localhost:5000/completed', {
+        fetch('https://task-manager-azim.herokuapp.com/completed', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -55,7 +55,7 @@ function ToDo() {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    fetch(`http://localhost:5000/deleteTask/${task._id}`, {
+                    fetch(`https://task-manager-azim.herokuapp.com/deleteTask/${task._id}`, {
                         method: "DELETE",
                         headers: {
                             'content-type': 'application/json'
@@ -71,7 +71,7 @@ function ToDo() {
     }
 
     if (editingId) {
-        fetch(`http://localhost:5000/task/${editingId}`)
+        fetch(`https://task-manager-azim.herokuapp.com/task/${editingId}`)
             .then(res => res.json())
             .then(data => {
                 data && setEditedTask(data); setEditingId('') 
@@ -84,7 +84,7 @@ function ToDo() {
         event.preventDefault()
         const name = event.target.name.value;
         const description = event.target.des.value;
-        fetch(`http://localhost:5000/editTask/${editedTask._id}`,{
+        fetch(`https://task-manager-azim.herokuapp.com/editTask/${editedTask._id}`,{
             method:"PUT",
             headers:{
                 "content-type":"application/json"
@@ -168,7 +168,7 @@ function ToDo() {
                     <form onSubmit={editTask}>
                         <input required className="input input-bordered w-full mb-4" type='text' name='name' placeholder="Task Name" contentEditable='true' defaultValue={editedTask.name} /> <br />
                         <textarea contentEditable={true} placeholder='Task Description' required className='textarea textarea-bordered mb-2' name='des' rows="3" cols="41" defaultValue={editedTask.description}></textarea> <br />
-                        <label for="my-modal-3"><input type='submit' className='btn btn-primary w-full text-white' value='Edit task'/></label>
+                        <label htmlFor="my-modal-3"  > <input  className='btn btn-primary w-full text-white' type='submit' value="Edit task"/> </label>
                     </form>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import Spinner from './Spinner';
 
 function Completed() {
     const [user,loading]=useAuthState(auth)
-    const {data,isLoading}=useQuery('completed',()=>fetch(`http://localhost:5000/completed/${user.email}`).then(res=>res.json()))
+    const {data,isLoading}=useQuery('completed',()=>fetch(`https://task-manager-azim.herokuapp.com/completed/${user.email}`).then(res=>res.json()))
     
 
     if(isLoading ||loading){
