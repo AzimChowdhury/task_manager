@@ -10,7 +10,7 @@ function Header() {
     const menu = <>
         <li><Link to='/calender' className='text-lg font-semibold hover:text-primary'>Calender</Link></li>
         <li><Link to='/todo' className='text-lg font-semibold hover:text-primary'>To Do</Link></li>
-        <li><p className='text-lg font-semibold hover:text-primary'>Completed</p></li>
+        <li><Link to='/completed' className='text-lg font-semibold hover:text-primary'>Completed</Link></li>
         <li>
             {user ?
                 <p onClick={()=>signOut(auth)} className='text-lg font-semibold hover:text-primary'>Sign Out</p>
